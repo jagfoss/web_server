@@ -1,0 +1,41 @@
+#control-panel {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.compo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 15px;
+    margin: 20px 0;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: lightgrey;
+}
+
+.compo.on {
+    background-color: gold;
+    border-color: green;
+}
+
+.compo.off {
+    background-color: grey;
+    border-color: darkred;
+}
+
+.toggle {
+    min-width: 50px;
+    text-align: center;
+    padding: 6px 6px;
+    font-size: 14px;
+}
+
+.temperature {
+    min-width: 40px;
+    text-align: center;
+    padding: 6px 6px;
+    font-size: 14px;
+}
+

@@ -1,0 +1,25 @@
+## Overview
+
+### This project contains:
+- A Java multi-threaded HTTP server with HTTP/1.1 keep-alive support.
+- A house automation front-end implemented in HTML, CSS, and jQuery, fetching component states via HTTP.
+
+## Project Structure
+
+    web_server/
+    ├─ src/          # Java HTTP server source code
+    └─ www/          # Frontend assets
+    ├─ index.html
+    ├─ style.css
+        ├─ js/        # JavaScript files
+        └─ data/      # JSON files
+
+## Running the Server
+
+- Open the project in IntelliJ (or another IDE). 
+- Run `src/server/Main.java` to start the HTTP server (default port 8000).
+- KeepAlive support can be enabled/disabled by the HTTP_KEEP_ALIVE flag in Main.java
+
+## Accessing the Frontend
+
+- Open a browser and navigate to: `http://localhost:8000/index.html`
