@@ -17,8 +17,8 @@ import static common.Constants.HTTP_OK_MESSAGE;
 import static common.Constants.SOCKET_TIMEOUT_MILLI_SECONDS;
 
 /**
- * This implementation uses blocking I/O (each client handled by a dedicated thread).
- * It can be improved using Java NIO (non-blocking I/O with selectors) to scale better
+ * KeepAlive version of the HttpClientHandler supporting HTTP GET and PUT.
+ * This implementation uses blocking I/O. It can be improved using non-blocking I/O to scale better
  * with many concurrent connections.
  * <p>
  * Parts of the KeepAlive implementation of this code were generated with the help of OpenAI's ChatGPT.

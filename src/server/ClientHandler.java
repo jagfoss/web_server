@@ -6,6 +6,25 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * A worker responsible for handling a single client connection.
+ * <p>
+ * Each {@code ClientHandler} is executed in its own thread (via {@link Runnable})
+ * and delegates the actual HTTP request/response processing to a provided
+ * {@link HttpClientHandler} implementation.
+ * <p>
+ * Typical responsibilities include:
+ * <ul>
+ *   <li>Wrapping a {@link Socket} connection for a client</li>
+ *   <li>Invoking {@link HttpClientHandler#handleClient(Socket)} to process the request</li>
+ * </ul>
+ * <p>
+ * This design separates connection/thread management from the HTTP
+ * protocol logic, allowing different {@code HttpClientHandler}
+ * implementations (e.g., basic or keep-alive) to be plugged in.
+ */
+
+
 public class ClientHandler implements Runnable {
     private static final Logger logger = Logger.getLogger(ClientHandler.class.getName());
 

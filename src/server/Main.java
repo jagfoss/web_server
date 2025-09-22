@@ -6,6 +6,35 @@ import java.util.concurrent.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Entry point for the multithreaded HTTP server.
+ * <p>
+ * This class initializes a {@link ServerSocket} bound to a configurable port
+ * and uses a fixed-size {@link ExecutorService} thread pool to handle incoming
+ * client connections. Each connection is delegated to a {@link ClientHandler},
+ * which processes the request using either a basic {@link HttpClientHandlerImpl}
+ * or a {@link KeepAliveHttpClientHandlerImpl}, depending on the server
+ * configuration (keep-alive enabled or disabled).
+ * </p>
+ *
+ * <p>
+ * A JVM shutdown hook ensures that the thread pool is properly shut down when
+ * the server is stopped. If threads do not terminate gracefully within a
+ * configured timeout, the thread pool is forcefully shut down.
+ * </p>
+ *
+ * <p>
+ * Features:
+ * <ul>
+ *   <li>Configurable server port</li>
+ *   <li>Configurable fixed-size thread pool</li>
+ *   <li>Graceful and forced shutdown of the thread pool</li>
+ *   <li>HTTP/1.1 keep-alive support (toggle via {@code HTTP_KEEP_ALIVE})</li>
+ *   <li>Error handling and logging for client connections</li>
+ * </ul>
+ * </p>
+ */
+
 public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
     private static final int SERVER_PORT = 8080;

@@ -10,6 +10,9 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Basic version of the HttpClientHandler supporting HTTP GET and PUT.
+ */
 public class HttpClientHandlerImpl implements HttpClientHandler {
     private static final Logger logger = Logger.getLogger(HttpClientHandlerImpl.class.getName());
 
