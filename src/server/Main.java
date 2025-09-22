@@ -36,10 +36,20 @@ public class Main {
             logger.log(Level.INFO, "Server started. Visit: http://localhost:%s".formatted(SERVER_PORT));
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                if (HTTP_KEEP_ALIVE) {
-                    threadPool.submit(new ClientHandler(clientSocket, new KeepAliveHttpClientHandlerImpl()));
-                } else {
-                    threadPool.submit(new ClientHandler(clientSocket, new HttpClientHandlerImpl()));
+                try {
+                    if (HTTP_KEEP_ALIVE) {
+                        threadPool.submit(new ClientHandler(clientSocket, new KeepAliveHttpClientHandlerImpl()));
+                    } else {
+                        threadPool.submit(new ClientHandler(clientSocket, new HttpClientHandlerImpl()));
+                    }
+                } catch (RejectedExecutionException rejectedExecutionException) {
+                    logger.log(Level.SEVERE, "Failed to submit client handler to thread pool", rejectedExecutionException);
+                    // In case socket is not closed, we try to close it here.
+                    try {
+                        clientSocket.close();
+                    } catch (IOException ioException) {
+                        logger.log(Level.WARNING, "Error closing client socket after rejection", ioException);
+                    }
                 }
             }
         } catch (IOException e) {
