@@ -11,7 +11,7 @@ public class Main {
     private static final int SERVER_PORT = 8080;
     private static final int THREAD_POOL_SIZE = 10;
     private static final int THREAD_POOL_TERMINATION_TIMEOUT_SECONDS = 10;
-    private static final boolean HTTP_KEEP_ALIVE = true;
+    private static final boolean HTTP_KEEP_ALIVE = false;
 
     public static void main(String[] args) {
         ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);

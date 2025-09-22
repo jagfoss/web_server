@@ -1,3 +1,10 @@
+/**
+ * app.js
+ *
+ * This file contains JavaScript components for the house automation control panel.
+ * It handles lighting, and heating components. This also explains how to add new components.
+ */
+
 $(document).ready(() => {
     const panel = $("#control-panel");
 
@@ -12,11 +19,13 @@ $(document).ready(() => {
         component.render(panel);
     });
 
-    // How to add a new component:
-    // const curtain = new Curtain("curtain");
-    // components.push(curtain);
-    // curtain.fetchState(panel);
-    // curtain.render(panel);
+    /*
+    How to add a new component:
+    const curtain = new Curtain("curtain");
+    components.push(curtain);
+    curtain.fetchState(panel);
+    curtain.render(panel);
+     */
 });
 
 $(document).on("componentStateChanged", (e, data) => {
